@@ -41,11 +41,11 @@ export default function TextForm(props) {
     const [text, setText] = useState("hi guies, i am avneesh");
     return (
         <>
-            <div>
+            <div className={`container my-1 text-${props.mode === 'dark' ? 'light' :'dark'}`}>
                 <div className="mb-3">
                     <h3>{props.lable}</h3>
                     {/* <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label> */}
-                    <textarea className="form-control" value={text} id="my-textarea" rows="3" onChange={handleOnChange}></textarea>
+                    <textarea className={`form-control bg-${props.mode === 'dark' ? 'dark' : 'white'} text-${props.mode === 'dark' ? 'white' : 'dark'}`} value={text} id="my-textarea" rows="3" onChange={handleOnChange}></textarea>
                 </div>
                 <button className="btn btn-primary mx-1 my-2" onClick={handleUpClick}>Convert To Uppercase</button>
                 <button className="btn btn-primary mx-1 my-2" onClick={handleLoClick}>Convert To Lovercase</button>
@@ -53,9 +53,10 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-1 my-2" onClick={seprateWithUnderscore}>Seprate With Underscore(_)</button>
                 <button className="btn btn-primary mx-1 my-2" onClick={clearText}>Clear</button>
             </div>
-            <div className="container">
+            <div className={`container my-1 text-${props.mode === 'dark' ? 'light' :'dark'}`}>
                 <h2>Your Text Summary</h2>
-                <p> {text.split(" ").length} words and {text.length} character</p>
+                {/* <p> {text.length === 0 ? "0" : text.split(" ").length} words and {text.length} character</p> */}
+                <p>{text.trim().length === 0 ? 0 : text.trim().split(/\s+/).length } words and {text.length} characters</p>
                 <h2>Preview</h2>
                 <p>{text}</p>
             </div>
